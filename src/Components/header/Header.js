@@ -10,7 +10,7 @@ export default function Header() {
         <h1>Budget Tracker</h1>
       </div>
       <div className="header__balance">
-        $
+        ${" "}
         {income.length &&
           income.map((e) => e.number).reduce((acc, curr) => +acc + +curr)}
       </div>
