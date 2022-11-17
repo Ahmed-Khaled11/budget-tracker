@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import "./input.css";
-
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/itemSlice";
 
