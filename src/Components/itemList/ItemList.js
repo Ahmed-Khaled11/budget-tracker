@@ -19,7 +19,7 @@ export default function ItemList() {
           {item.length ? (
             item.map((item, index) => (
               <div className="items " key={index}>
-                <p className="item-price">{index + 1}-</p>
+                <p >{index + 1}-</p>
                 <span className="title">{item.title}</span>
                 <span className="price"> $ {item.price}</span>
                 <span className="date">{item.date}</span>
