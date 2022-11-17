@@ -10,7 +10,6 @@ export default function ItemList() {
   const handleDelete = (hh) => {
     item = item.filter((w) => w.title !== hh);
     dispatch(updateItems(item));
-    console.log(item)
     localStorage.setItem("itemList", JSON.stringify(item));
   }
     return (
@@ -20,10 +19,9 @@ export default function ItemList() {
           {item.length ? (
             item.map((item, index) => (
               <div className="items " key={index}>
-                {" "}
-                <p className="item-number">{index + 1} -</p>
+                <p className="item-price">{index + 1}-</p>
                 <span className="title">{item.title}</span>
-                <span className="number"> $ {item.number}</span>
+                <span className="price"> $ {item.price}</span>
                 <span className="date">{item.date}</span>
                 <span
                   style={{ color: item.type === "income" ? "green" : "red" }}
@@ -35,7 +33,7 @@ export default function ItemList() {
               </div>
             ))
           ) : (
-            <span className="empty"> "No Items To Show !"</span>
+            <span className="empty-data"> "No Items To Show !"</span>
           )}
         </div>
       </div>

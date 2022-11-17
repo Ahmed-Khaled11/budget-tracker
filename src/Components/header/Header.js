@@ -12,7 +12,7 @@ export default function Header() {
       <div className="header__balance">
         ${" "}
         {income.length &&
-          income.map((e) => e.number).reduce((acc, curr) => +acc + +curr)}
+          income.map((item) => item.price).reduce((acc, curr) => +acc + +curr)}
       </div>
     </div>
   );

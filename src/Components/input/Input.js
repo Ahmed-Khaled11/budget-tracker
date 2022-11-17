@@ -5,33 +5,30 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/itemSlice";
 
 export default function Input() {
-
-
-
   const title = useRef();
-  const number = useRef();
+  const price = useRef();
     const date = useRef();
-    const type = useRef();
+  const type = useRef();
+  const theDate = new Date();
   const handleAddItem = (e) => {
     e.preventDefault();
     title.current.value &&
-      number.current.value !== "" &&
+      price.current.value !== "" &&
       dispatch(
         addItem({
           title: title.current.value,
-          number: number.current.value,
-          date: date.current.value,
-          type: type.current.value
+          price: price.current.value,
+          date:
+            date.current.value ||
+            `${theDate.getFullYear()}-${
+              theDate.getMonth() + 1
+            }-${theDate.getDate()}`,
+          type: type.current.value,
         })
       );
     e.target.reset()
   }
-
-
   const dispatch = useDispatch()
-  
-
-  
   return (
     <div className="input">
       <div className="container">
@@ -42,16 +39,19 @@ export default function Input() {
             placeholder="Enter Title"
             autoComplete="off"
             ref={title}
+            maxLength="10"
           />
           <input
             type="number"
-            name="amount"
-            placeholder="Enter Number"
-            ref={number}
+            name="price"
+            placeholder="Enter price"
+            ref={price}
+            max="100000"
+            autoComplete="off"
           />
           <input type="date" name="data" placeholder="Enter Date" ref={date} />
+          
           <label htmlFor="type">Type</label>
-
           <select name="type" ref={type}>
             <option value="income">Income</option>
             <option value="expense">Expense</option>

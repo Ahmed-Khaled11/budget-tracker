@@ -10,7 +10,7 @@
     }
     .items {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #2aa57c;
     padding-bottom: 2rem;
@@ -19,8 +19,9 @@
     .items span{
     border-right: 1px solid black;
     padding: 4px;
+    text-align: start;
     }
-    .item-number{
+    .item-price{
     font-size: 14px;
     }
     .title{
@@ -28,7 +29,7 @@
     font-size: 24px;
     font-weight: bold;
     text-transform: capitalize;
-    min-width: 20%;
+    min-width: 22.5%;
     }
     @media (max-width:767px) {
     .items{
@@ -39,23 +40,23 @@
     }
     .title{
     font-size: 16px;
-    min-width: 15%;
+    min-width: 22.5%;
     }
     }
-    .number{
+    .price{
     color: rgb(0 118 185);
-    min-width: 15%;
+    min-width: 17.5%;
     font-size: 1.4rem;
     }
     .date{
     color: rgb(68, 8, 8);
-    font-size: 16px;
-    min-width: 20%
+    font-size: 18px;
+    min-width: 25%
     }
     .type{
-    min-width: 15%;
+    min-width: 17.5%;
     }
-    .empty{
+    .empty-data{
     display: block;
     font-size: 26px;
     color: rgb(155, 10, 10);
@@ -66,7 +67,7 @@
     button{
     background-color: red;
     color: #fff ;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold; 
     padding: 0.5rem;
     border: 0;
@@ -82,7 +83,7 @@
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
     min-width: 5%;
-    margin-left:6px ;
+    margin-left:1rem ;
     }
     button:hover{
     background-color: #fff;
