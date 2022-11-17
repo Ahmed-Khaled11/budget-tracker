@@ -77,7 +77,6 @@ color: red;
 }
 .items.active{
 position: relative;
-background-color: rgb(245 247 248);
 opacity: 0.6;
 }
 .items.active::before{
