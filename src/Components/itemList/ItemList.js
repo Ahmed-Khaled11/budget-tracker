@@ -20,15 +20,15 @@ export default function ItemList() {
             item.map((item, index) => (
               <div className="items " key={index}>
                 <p >{index + 1}-</p>
-                <span className="title">{item.title}</span>
-                <span className="price"> $ {item.price}</span>
-                <span className="date">{item.date}</span>
+                <span className="title">{item.title}</span>|
+                <span className="price">${item.price}</span>|
+                <span className="date">{item.date}</span>|
                 <span
                   style={{ color: item.type === "income" ? "green" : "red" }}
                   className="type"
                 >
                   {item.type}
-                </span>
+                </span>|
                 <button onClick={() => handleDelete(item.title)}>Del</button>
               </div>
             ))
