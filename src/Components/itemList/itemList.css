@@ -85,5 +85,5 @@ background-color: rgb(0 118 185);
 opacity: 1 !important;
 }
 .items.active button{
-pointer-events: none ;
+pointer-events:none;
 }

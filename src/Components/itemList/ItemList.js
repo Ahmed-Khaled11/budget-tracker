@@ -1,17 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateItems } from "../../redux/itemSlice";
-
 import "./itemList.css";
 export default function ItemList() {
-  let { item } = useSelector((state) => state.item)
+  let { item } = useSelector((state) => state.item);
   let dispatch = useDispatch()
-  const handleActive = (e) => {
-    e.target.classList.value.includes("items")
-      ? e.target.classList.toggle("active")
-      : e.target.parentElement.classList.toggle("active");
-  }
-  const handleDelete = (title) => {
-    item = item.filter((w) => w.title !== title);
+
+  const deleteItem = (index) => {
+    item = item.filter((__,i) => i !== index);
     dispatch(updateItems(item));
     localStorage.setItem("itemList", JSON.stringify(item));
   }
@@ -24,9 +19,8 @@ export default function ItemList() {
               <div
                 className="items"
                 key={index}
-                onClick={(e) => handleActive(e)}
               >
-                <p>{index + 1}-</p>
+                <p>{index + 1} -</p>
                 <span className="title">{item.title}</span>|
                 <span
                   className="price"
@@ -35,7 +29,7 @@ export default function ItemList() {
                   ${item.price}
                 </span>
                 |<span className="date">{item.date}</span>
-                |<button onClick={() => handleDelete(item.title)}>Delete</button>
+                |<button onClick={(e) => deleteItem(index)}>Delete</button>
               </div>
             ))
           ) : (

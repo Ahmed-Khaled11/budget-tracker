@@ -9,12 +9,15 @@ export default function Input() {
   const date = useRef();
   const type = useRef();
   const theDate = new Date();
+  const dispatch = useDispatch();
+
   const handleAddItem = (e) => {
     e.preventDefault();
     title.current.value &&
       price.current.value !== "" &&
       dispatch(
         addItem({
+          isActive: false,
           title: title.current.value,
           price: price.current.value,
           date:
@@ -27,7 +30,6 @@ export default function Input() {
       );
     e.target.reset()
   }
-  const dispatch = useDispatch()
   return (
     <div className="input">
       <div className="container">
