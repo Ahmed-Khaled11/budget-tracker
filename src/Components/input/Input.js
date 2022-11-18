@@ -7,7 +7,6 @@ export default function Input() {
   const title = useRef();
   const price = useRef();
     const date = useRef();
-  const type = useRef();
   const theDate = new Date();
   const handleAddItem = (e) => {
     e.preventDefault();
@@ -22,7 +21,6 @@ export default function Input() {
             `${theDate.getFullYear()}-${
               theDate.getMonth() + 1
             }-${theDate.getDate()}`,
-          type: type.current.value,
         })
       );
     e.target.reset()
@@ -51,7 +49,7 @@ export default function Input() {
           <input type="date" name="data" placeholder="Enter Date" ref={date} />
           
           <label htmlFor="type">Type</label>
-          <select name="type" ref={type}>
+          <select name="type">
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>

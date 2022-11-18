@@ -21,27 +21,23 @@ color:  rgb(0 118 185);
 font-size: 24px;
 font-weight: bold;
 text-transform: capitalize;
-min-width: 17.5%;
+min-width: 25%;
 }
 @media (max-width:767px) {
 .items ,
 .items p , .items span{
 font-size: 14px;
 }
-
 }
 .price{
 color: #275c81;
-min-width: 17.5%;
+min-width: 20%;
 font-size: 1.4rem;
 }
 .date{
 color: rgb(66 89 103);
 font-size: 18px;
-min-width: 25%
-}
-.type{
-min-width: 15%;
+min-width: 27.5%;
 }
 .empty-data{
 display: block;

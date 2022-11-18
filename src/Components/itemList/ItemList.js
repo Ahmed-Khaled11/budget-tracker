@@ -4,14 +4,12 @@ import { updateItems } from "../../redux/itemSlice";
 import "./itemList.css";
 export default function ItemList() {
   let { item } = useSelector((state) => state.item)
-  // let item = item;
   let dispatch = useDispatch()
   const handleActive = (e) => {
     e.target.classList.value.includes("items")
       ? e.target.classList.toggle("active")
       : e.target.parentElement.classList.toggle("active");
   }
-
   const handleDelete = (title) => {
     item = item.filter((w) => w.title !== title);
     dispatch(updateItems(item));
@@ -30,15 +28,14 @@ export default function ItemList() {
               >
                 <p>{index + 1}-</p>
                 <span className="title">{item.title}</span>|
-                <span className="price">${item.price}</span>|
-                <span className="date">{item.date}</span>|
                 <span
+                  className="price"
                   style={{ color: item.type === "income" ? "green" : "red" }}
-                  className="type"
                 >
-                  {item.type}
+                  ${item.price}
                 </span>
-                |<button onClick={() => handleDelete(item.title)}>Del</button>
+                |<span className="date">{item.date}</span>
+                |<button onClick={() => handleDelete(item.title)}>Delete</button>
               </div>
             ))
           ) : (
