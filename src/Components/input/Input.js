@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import "./input.css";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../redux/itemSlice";
-
+import { addItem, } from "../../redux/itemSlice";
 export default function Input() {
   const title = useRef();
   const price = useRef();
@@ -10,14 +9,15 @@ export default function Input() {
   const type = useRef();
   const theDate = new Date();
   const dispatch = useDispatch();
-
+  
+  let num = 0;
   const handleAddItem = (e) => {
     e.preventDefault();
     title.current.value &&
       price.current.value !== "" &&
       dispatch(
         addItem({
-          isActive: false,
+          key: num,
           title: title.current.value,
           price: price.current.value,
           date:
@@ -27,7 +27,8 @@ export default function Input() {
             }-${theDate.getDate()}`,
           type: type.current.value,
         })
-      );
+        );
+        num++
     e.target.reset()
   }
   return (

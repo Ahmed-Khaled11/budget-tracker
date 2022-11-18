@@ -3,12 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const clientSide = typeof window !== "undefined";
 const initialState = {
   item: clientSide
-    ? localStorage.getItem("itemList")
-      ? JSON.parse(localStorage.getItem("itemList"))
-      : []
-    : [],
+  ? localStorage.getItem("itemList")
+  ? JSON.parse(localStorage.getItem("itemList"))
+  : []
+  : [],
 };
-
 export const itemSlice = createSlice({
   name: "product",
   initialState,

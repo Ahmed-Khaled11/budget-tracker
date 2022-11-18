@@ -2,11 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateItems } from "../../redux/itemSlice";
 import "./itemList.css";
 export default function ItemList() {
+  
   let { item } = useSelector((state) => state.item);
-  let dispatch = useDispatch()
 
+  let dispatch = useDispatch();
+
+  const handleActive = (e) => {
+    e.target.classList.toggle("active");
+  };
   const deleteItem = (index) => {
-    item = item.filter((__,i) => i !== index);
+    item = item.filter((__,i) => index!== i);
     dispatch(updateItems(item));
     localStorage.setItem("itemList", JSON.stringify(item));
   }
@@ -18,7 +23,8 @@ export default function ItemList() {
             item.map((item, index) => (
               <div
                 className="items"
-                key={index}
+                key={item.key}
+                onClick={(e) => handleActive(e)}
               >
                 <p>{index + 1} -</p>
                 <span className="title">{item.title}</span>|
@@ -28,8 +34,8 @@ export default function ItemList() {
                 >
                   ${item.price}
                 </span>
-                |<span className="date">{item.date}</span>
-                |<button onClick={(e) => deleteItem(index)}>Delete</button>
+                |<span className="date">{item.date}</span>|
+                <button onClick={(e) => deleteItem(index)}>Delete</button>
               </div>
             ))
           ) : (
