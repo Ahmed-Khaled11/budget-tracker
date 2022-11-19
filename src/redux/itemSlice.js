@@ -2,28 +2,28 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const clientSide = typeof window !== "undefined";
 const initialState = {
-  item: clientSide
-  ? localStorage.getItem("itemList")
-  ? JSON.parse(localStorage.getItem("itemList"))
-  : []
-  : [],
+  items: clientSide
+    ? localStorage.getItem("itemList")
+      ? JSON.parse(localStorage.getItem("itemList"))
+      : []
+    : [],
 };
 export const itemSlice = createSlice({
-  name: "product",
+  name: "items",
   initialState,
   reducers: {
     addItem: (state, action) => {
-      state.item = [...state.item, action.payload];
+      state.items = [...state.items, action.payload];
       // add item to localStorage
-      localStorage.setItem("itemList", JSON.stringify(state.item));
+      localStorage.setItem("itemList", JSON.stringify(state.items));
+
     },
     updateItems: (state, action) => {
-      state.item = action.payload;
+      state.items = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem, updateItems, updateIsActive } = itemSlice.actions;
-
+export const { addItem, updateItems,  } = itemSlice.actions;
 export default itemSlice.reducer;

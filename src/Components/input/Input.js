@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./input.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem, } from "../../redux/itemSlice";
 export default function Input() {
   const title = useRef();
@@ -9,7 +9,6 @@ export default function Input() {
   const type = useRef();
   const theDate = new Date();
   const dispatch = useDispatch();
-  
   let num = 0;
   const handleAddItem = (e) => {
     e.preventDefault();
@@ -27,10 +26,10 @@ export default function Input() {
             }-${theDate.getDate()}`,
           type: type.current.value,
         })
-        );
-        num++
-    e.target.reset()
-  }
+      );
+    num++;
+    e.target.reset();
+  };
   return (
     <div className="input">
       <div className="container">
@@ -52,7 +51,6 @@ export default function Input() {
             autoComplete="off"
           />
           <input type="date" name="data" placeholder="Enter Date" ref={date} />
-          
           <label htmlFor="type">Type</label>
           <select name="type" ref={type}>
             <option value="income">Income</option>
