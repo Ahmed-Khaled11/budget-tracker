@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateIsActive, updateTasks } from "../../redux/taskSlice";
+import {  updateTasks } from "../../redux/taskSlice";
 import "./taskList.css";
 export default function ItemList() {
   let dispatch = useDispatch();
@@ -18,22 +18,20 @@ export default function ItemList() {
     if (e.target.innerHTML !== "Delete") {
       if (currentTask.isActive) {
         currentTask.isActive = false;
-        dispatch(updateIsActive(false));
       } else {
         currentTask.isActive = true;
-        dispatch(updateIsActive(true));
       }
     }
-    // update tasks in localStorage
-    localStorage.setItem("tasks", JSON.stringify(tasks));
     // update tasks in redux Store
     dispatch(updateTasks(tasks));
+    // update tasks in localStorage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
   // function to delete item from page & localStorage
   const deleteTask = (index) => {
     tasks = tasks.filter((__, i) => index !== i);
+    // Delete tasks in redux Store
     dispatch(updateTasks(tasks));
-
     // delete from localStorage
     localStorage.setItem("tasks", JSON.stringify(tasks));
   };

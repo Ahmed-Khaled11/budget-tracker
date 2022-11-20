@@ -21,12 +21,9 @@ export const tasksSlice = createSlice({
     updateTasks: (state, action) => {
       state.tasks = action.payload;
     },
-    updateIsActive: (state, action) => {
-      state.isActive = action.payload;
-    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTask, updateTasks, updateIsActive } = tasksSlice.actions;
+export const { addTask, updateTasks } = tasksSlice.actions;
 export default tasksSlice.reducer;
