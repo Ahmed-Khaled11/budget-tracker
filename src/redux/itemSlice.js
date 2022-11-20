@@ -7,6 +7,7 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("itemList"))
       : []
     : [],
+  isActive:false
 };
 export const itemSlice = createSlice({
   name: "items",
@@ -16,14 +17,16 @@ export const itemSlice = createSlice({
       state.items = [...state.items, action.payload];
       // add item to localStorage
       localStorage.setItem("itemList", JSON.stringify(state.items));
-
     },
     updateItems: (state, action) => {
       state.items = action.payload;
+    },
+    updateIsActive: (state, action) => {
+      state.isActive = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem, updateItems,  } = itemSlice.actions;
+export const { addItem, updateItems, updateIsActive } = itemSlice.actions;
 export default itemSlice.reducer;

@@ -1,38 +1,43 @@
-import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateItems } from "../../redux/itemSlice";
+import { updateIsActive, updateItems } from "../../redux/itemSlice";
 import "./itemList.css";
 export default function ItemList() {
-  let { items } = useSelector((state) => state.items);
   let dispatch = useDispatch();
+  let { items } = useSelector((state) => state.items);
+  let { isActive } = useSelector((state) => state.items);
+
   let localStorageItems = JSON.parse(localStorage.getItem("itemList"));
-  let isActive = false;
+  // add key = isActive to all itemes
   items = items.map((e) => ({ ...e, isActive }));
-  if (localStorageItems.length) {
+  if (localStorageItems) {
     items = localStorageItems;
   }
-  const handleActive = (e, currentIndex) => {
+  // to handle class |isActive| when click on task
+  const handleIsActive = (e, currentIndex) => {
     let index = items.indexOf(currentIndex);
-
     if (e.target.innerHTML !== "Delete") {
-      if (isActive) {
-        
-        e.target.classList.remove("active");
-        isActive = !isActive;
-        items[index].isActive = isActive;
+      if (currentIndex.isActive) {
+        items[index].isActive = false;
+        dispatch(updateIsActive(false));
       } else {
-        e.target.classList.add("active");
-        isActive = !isActive;
-        items[index].isActive = isActive;
+        items[index].isActive = true;
+        dispatch(updateIsActive(true));
       }
-      localStorage.setItem("itemList", JSON.stringify(items));
     }
+    // update items in localStorage
+    localStorage.setItem("itemList", JSON.stringify(items));
+    // update items in redux Store
+    dispatch(updateItems(items));
   };
+  // function to delete item from page & localStorage
   const deleteItem = (index) => {
     items = items.filter((__, i) => index !== i);
     dispatch(updateItems(items));
+
+    // delete from localStorage
     localStorage.setItem("itemList", JSON.stringify(items));
   };
+
   return (
     <div className="itemList container">
       <div className="list">
@@ -41,10 +46,10 @@ export default function ItemList() {
           items.map((item, index) => (
             <div
               className={`items ${item.isActive ? `active` : ""}`}
-              key={item.key}
-              onClick={(e) => handleActive(e, item)}
+              key={index}
+              onClick={(e) => handleIsActive(e, item)}
             >
-              <p>{item.key + 1} -</p>
+              <p>{index + 1} -</p>
               <span className="title">{item.title}</span>|
               <span
                 className="price"

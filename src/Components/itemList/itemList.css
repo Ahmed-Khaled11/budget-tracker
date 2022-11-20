@@ -3,6 +3,8 @@
     font-weight: bold;
     font-size: 28px; 
     margin-bottom: 1rem;
+    max-height:     vh;
+    overflow-y: scroll;
     }
     @media (max-width:767px) {
     .list {
@@ -18,7 +20,6 @@
     padding-bottom: 2rem;
     margin-bottom: 2rem;
     }
-
     .items span{
     padding: 4px;
     }
