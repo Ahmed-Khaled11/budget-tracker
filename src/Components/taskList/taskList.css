@@ -18,7 +18,12 @@
     padding-bottom: 2rem;
     margin-bottom: 2rem;
     cursor: pointer;
-    }
+    transition: 0.6s;
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -ms-transition: 0.6s;
+    -o-transition: 0.6s;
+}
     .task span{
     padding: 4px;
     }
@@ -37,7 +42,6 @@
     .task p , .task span{
     font-size: 12px;
     }
-
     }
     .price{
     display: flex;
@@ -93,13 +97,19 @@
     .task.active{
     position: relative;
     opacity: 0.5;
-    }
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    /* width: 0px; */
+}
     .task.active::before{
     content: "";
     position: absolute;
     width: 100%;
     height: 3px;
-    background-color: rgb(0 118 185);
+    background-color: rgb(93 157 192);
     opacity: 1 !important;
     }
     .task.active button{

@@ -12,15 +12,15 @@ export default function ItemList() {
   if (localStoragetasks) {
     tasks = localStoragetasks;
   }
-  // to handle class |isActive| when click on task
-  const handleIsActive = (e, currentIndex) => {
-    let index = tasks.indexOf(currentIndex);
+  // to handle class "isActive" when click on task
+  const handleIsActive = (e, currentTask) => {
+    console.log(currentTask);
     if (e.target.innerHTML !== "Delete") {
-      if (currentIndex.isActive) {
-        tasks[index].isActive = false;
+      if (currentTask.isActive) {
+        currentTask.isActive = false;
         dispatch(updateIsActive(false));
       } else {
-        tasks[index].isActive = true;
+        currentTask.isActive = true;
         dispatch(updateIsActive(true));
       }
     }

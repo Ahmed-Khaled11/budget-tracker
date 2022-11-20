@@ -44,7 +44,7 @@ export default function Input() {
             name="price"
             placeholder="Enter price"
             ref={price}
-            max="100000"
+            max="1000000"
             autoComplete="off"
           />
           <input type="date" name="data" placeholder="Enter Date" ref={date} />
