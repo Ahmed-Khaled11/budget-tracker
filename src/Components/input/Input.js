@@ -51,7 +51,7 @@ export default function Input() {
           <label htmlFor="type">Type</label>
           <select name="type" ref={type}>
             <option value="income">Income</option>
-            <option value="expense">Expense</option>
+            <option value="expense">Expenses</option>
           </select>
           <input type="submit" value="Add" />
         </form>
