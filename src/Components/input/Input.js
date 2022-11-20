@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./input.css";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../redux/itemSlice";
+import { addTask } from "../../redux/taskSlice";
 export default function Input() {
   const title = useRef();
   const price = useRef();
@@ -9,12 +9,12 @@ export default function Input() {
   const type = useRef();
   const theDate = new Date();
   const dispatch = useDispatch();
-  const handleAddItem = (e) => {
+  const handleAddTask = (e) => {
     e.preventDefault();
     title.current.value &&
       price.current.value !== "" &&
       dispatch(
-        addItem({
+        addTask({
           title: title.current.value,
           price: price.current.value,
           date:
@@ -30,7 +30,7 @@ export default function Input() {
   return (
     <div className="input">
       <div className="container">
-        <form onSubmit={(e) => handleAddItem(e)}>
+        <form onSubmit={(e) => handleAddTask(e)}>
           <input
             type="text"
             name="text"

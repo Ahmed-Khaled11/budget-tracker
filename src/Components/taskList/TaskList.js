@@ -1,62 +1,62 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateIsActive, updateItems } from "../../redux/itemSlice";
-import "./itemList.css";
+import { updateIsActive, updateTasks } from "../../redux/taskSlice";
+import "./taskList.css";
 export default function ItemList() {
   let dispatch = useDispatch();
-  let { items } = useSelector((state) => state.items);
-  let { isActive } = useSelector((state) => state.items);
+  let { tasks } = useSelector((state) => state.tasks);
+  let { isActive } = useSelector((state) => state.tasks);
 
-  let localStorageItems = JSON.parse(localStorage.getItem("itemList"));
+  let localStoragetasks = JSON.parse(localStorage.getItem("tasks"));
   // add key = isActive to all itemes
-  items = items.map((e) => ({ ...e, isActive }));
-  if (localStorageItems) {
-    items = localStorageItems;
+  tasks = tasks.map((e) => ({ ...e, isActive }));
+  if (localStoragetasks) {
+    tasks = localStoragetasks;
   }
   // to handle class |isActive| when click on task
   const handleIsActive = (e, currentIndex) => {
-    let index = items.indexOf(currentIndex);
+    let index = tasks.indexOf(currentIndex);
     if (e.target.innerHTML !== "Delete") {
       if (currentIndex.isActive) {
-        items[index].isActive = false;
+        tasks[index].isActive = false;
         dispatch(updateIsActive(false));
       } else {
-        items[index].isActive = true;
+        tasks[index].isActive = true;
         dispatch(updateIsActive(true));
       }
     }
-    // update items in localStorage
-    localStorage.setItem("itemList", JSON.stringify(items));
-    // update items in redux Store
-    dispatch(updateItems(items));
+    // update tasks in localStorage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    // update tasks in redux Store
+    dispatch(updateTasks(tasks));
   };
   // function to delete item from page & localStorage
-  const deleteItem = (index) => {
-    items = items.filter((__, i) => index !== i);
-    dispatch(updateItems(items));
+  const deleteTask = (index) => {
+    tasks = tasks.filter((__, i) => index !== i);
+    dispatch(updateTasks(tasks));
 
     // delete from localStorage
-    localStorage.setItem("itemList", JSON.stringify(items));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   return (
-    <div className="itemList container">
+    <div className="tasks container">
       <div className="list">
-        Item List :
-        {items.length ? (
-          items.map((item, index) => (
+        Tasks List :
+        {tasks.length ? (
+          tasks.map((task, index) => (
             <div
-              className={`items ${item.isActive ? `active` : ""}`}
+              className={`task ${task.isActive ? `active` : ""}`}
               key={index}
-              onClick={(e) => handleIsActive(e, item)}
+              onClick={(e) => handleIsActive(e, task)}
             >
               <p>{index + 1} -</p>
-              <span className="title">{item.title}</span>|
+              <span className="title">{task.title}</span>|
               <span
                 className="price"
-                style={{ color: item.type === "income" ? "green" : "red" }}
+                style={{ color: task.type === "income" ? "green" : "red" }}
               >
-                ${item.price}{" "}
-                {item.type === "income" ? (
+                ${task.price}{" "}
+                {task.type === "income" ? (
                   <svg
                     xmlns="http://indexww.w3.org/2000/svg"
                     width="20"
@@ -86,12 +86,12 @@ export default function ItemList() {
                   </svg>
                 )}
               </span>
-              |<span className="date">{item.date}</span>|
-              <button onClick={(e) => deleteItem(index)}>Delete</button>
+              |<span className="date">{task.date}</span>|
+              <button onClick={(e) => deleteTask(index)}>Delete</button>
             </div>
           ))
         ) : (
-          <span className="empty-data">sorry, No Items To Show !</span>
+          <span className="empty-data">sorry, No tasks To Show !</span>
         )}
       </div>
     </div>
