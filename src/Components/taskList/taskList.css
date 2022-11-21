@@ -23,7 +23,7 @@
     -moz-transition: 0.6s;
     -ms-transition: 0.6s;
     -o-transition: 0.6s;
-}
+    }
     .task span{
     padding: 4px;
     }
@@ -34,7 +34,11 @@
     text-transform: capitalize;
     min-width: 25%;
     }
+
     @media (max-width:767px) {
+    .title{
+    font-size: 14px !important;
+    }
     .task {
     padding-bottom: 1rem;
     }
@@ -42,6 +46,21 @@
     .task p , .task span{
     font-size: 12px;
     }
+    .task p {
+    font-size: 10px;
+    }
+    }
+    .task-list{
+    background-color: rgb(11, 130, 241);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.7rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
     }
     .price{
     display: flex;
@@ -54,15 +73,7 @@
     .date{
     color: rgb(66 89 103);
     font-size: 18px;
-    min-width: 27.5%;
-    }
-    .empty-data{
-    display: block;
-    font-size: 26px;
-    color: rgb(155, 10, 10);
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
+    min-width: 20%;
     }
     @media (max-width:767px) {
     .empty-data{
@@ -103,7 +114,7 @@
     -ms-transition: 1s;
     -o-transition: 1s;
     /* width: 0px; */
-}
+    }
     .task.active::before{
     content: "";
     position: absolute;

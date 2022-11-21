@@ -39,7 +39,7 @@ export default function ItemList() {
   return (
     <div className="tasks container">
       <div className="list">
-        Tasks List :
+        <p className="task-list">{tasks.length ? "Tasks List" : <span> No tasks To Show, Add One.. !</span>}</p>
         {tasks.length ? (
           tasks.map((task, index) => (
             <div
@@ -88,9 +88,7 @@ export default function ItemList() {
               <button onClick={(e) => deleteTask(index)}>Delete</button>
             </div>
           ))
-        ) : (
-          <span className="empty-data">sorry, No tasks To Show !</span>
-        )}
+        ) :""}
       </div>
     </div>
   );

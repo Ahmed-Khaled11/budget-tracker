@@ -2,16 +2,16 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #eee;
+    background-color: rgb(11, 130, 241);
     padding: 22px;
     box-shadow: 3px 3px 18px 3px rgb(27 27 27 / 25%);
-    margin-bottom: 2rem;
+    white-space: nowrap;
     }
 
     .header .header__title h1 {
     font-weight: bold;
     font-size: 38px;
-    color: #063a51;
+    color: #fff;
     }
     @media (max-width:767px) {
     .header .header__title h1{
@@ -19,8 +19,8 @@
     }
     }
     .header .header__balance {
-    background-color: rgb(11, 130, 241);
-    color: #fff;
+    background-color: #fff;
+    color: rgb(11, 130, 241);
     font-size: 22px;
     font-weight: bold;
     padding: 1rem;
@@ -30,3 +30,8 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     }
+    @media (max-width:767px) {
+    .header .header__balance{
+    padding: 12px;
+    font-size: 1rem;
+    }}
