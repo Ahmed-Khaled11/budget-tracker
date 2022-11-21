@@ -14,7 +14,6 @@ export default function ItemList() {
   }
   // to handle class "isActive" when click on task
   const handleIsActive = (e, currentTask) => {
-    console.log(currentTask);
     if (e.target.innerHTML !== "Delete") {
       if (currentTask.isActive) {
         currentTask.isActive = false;
