@@ -47,7 +47,7 @@ export default function Input() {
             max="1000000"
             autoComplete="off"
           />
-          <input type="date" name="data" placeholder="Enter Date" ref={date} />
+          <input type="date" name="data" placeholder="Enter Date" ref={date} value="2022-11-20" />
           <label htmlFor="type">Type</label>
           <select name="type" ref={type}>
             <option value="income">Income</option>
