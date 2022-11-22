@@ -18,10 +18,7 @@ export default function Input() {
           title: title.current.value,
           price: price.current.value,
           date:
-            date.current.value ||
-            `${theDate.getFullYear()}-${
-              theDate.getMonth() + 1
-            }-${theDate.getDate()}`,
+            date.current.value,
           type: type.current.value,
         })
       );
@@ -47,13 +44,18 @@ export default function Input() {
             max="1000000"
             autoComplete="off"
           />
-          <input type="date" name="data" placeholder="Enter Date" ref={date} value="2022-11-20" />
+          <input
+            type="date"
+            name="data"
+            placeholder="Enter Date"
+            ref={date}
+            defaultValue={`${theDate.getFullYear()}-${theDate.getMonth()+1}-${theDate.getDate()}`} />
           <label htmlFor="type">Type</label>
           <select name="type" ref={type}>
             <option value="income">Income</option>
             <option value="expense">Expenses</option>
           </select>
-          <input type="submit" value="Add" />
+          <input type="submit" value="Add Task" />
         </form>
       </div>
     </div>
