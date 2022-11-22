@@ -7,7 +7,12 @@
     box-shadow: 3px 3px 18px 3px rgb(27 27 27 / 25%);
     white-space: nowrap;
     }
+        @media (max-width:767px) {
+            .header  {
+                padding:1rem;
 
+            }
+        }
     .header .header__title h1 {
     font-weight: bold;
     font-size: 38px;
@@ -15,7 +20,7 @@
     }
     @media (max-width:767px) {
     .header .header__title h1{
-    font-size: 28px;
+    font-size: 1.2rem;
     }
     }
     .header .header__balance {

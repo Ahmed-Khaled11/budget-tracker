@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./header.css";
 export default function Header() {
-  const { tasks } = useSelector((state) => state.tasks);
-  const income = tasks.filter((item) => item.type === "income");
+  const { items } = useSelector((state) => state.items);
+  const income = items.filter((item) => item.type === "income");
   return (
     <div className="header">
       <div className="header__title">
@@ -12,7 +12,7 @@ export default function Header() {
       <div className="header__balance">
         ${" "}
         {income.length &&
-          income.map((task) => task.price).reduce((acc, curr) => +acc + +curr)}
+          income.map((item) => item.price).reduce((acc, curr) => +acc + +curr)}
       </div>
     </div>
   );

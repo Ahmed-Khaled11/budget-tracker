@@ -9,7 +9,7 @@
     font-size: 20px;
     }
     }
-    .task {
+    .item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +24,7 @@
     -ms-transition: 0.6s;
     -o-transition: 0.6s;
     }
-    .task span{
+    .item span{
     padding: 4px;
     }
     .title{
@@ -39,18 +39,18 @@
     .title{
     font-size: 14px !important;
     }
-    .task {
+    .item {
     padding-bottom: 1rem;
     }
-    .task ,
-    .task p , .task span{
+    .item ,
+    .item p , .item span{
     font-size: 12px;
     }
-    .task p {
+    .item p {
     font-size: 10px;
     }
     }
-    .task-list{
+    .item-list{
     background-color: rgb(76 182 199);
     color: #fff;
     font-size: 1.5rem;
@@ -64,8 +64,9 @@
     -o-border-radius: 0.5rem;
     }
     @media (max-width:767px) {
-        .task-list{
+        .item-list{
             font-size: 1rem;
+                margin-bottom: 2.5rem;
         }
     }
     .price{
@@ -111,7 +112,7 @@
     background-color: #fff;
     color: red;
     }
-    .task.active{
+    .item.active{
     position: relative;
     opacity: 0.5;
     transition: 1s;
@@ -121,7 +122,7 @@
     -o-transition: 1s;
     /* width: 0px; */
     }
-    .task.active::before{
+    .item.active::before{
     content: "";
     position: absolute;
     width: 100%;
@@ -129,6 +130,6 @@
     background-color: rgb(93 157 192);
     opacity: 1 !important;
     }
-    .task.active button{
+    .item.active button{
     pointer-events:none;
     }

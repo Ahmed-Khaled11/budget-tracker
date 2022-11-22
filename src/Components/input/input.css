@@ -66,11 +66,12 @@
     }
     @media (max-width:767px) 
     {
-        input[type="date"] {
-                width: 100%;
-            }
+    input[type="date"] {
+    width: 100%;
+    background-color: #fff !important;
     }
-  
+    }
+
     .input input[type="submit"] {
     background-color: rgb(11, 130, 241);
     color: #fff;
@@ -89,4 +90,3 @@
     .input input[type="submit"]:hover {
     background-color: rgb(23, 107, 185);
     }
-    

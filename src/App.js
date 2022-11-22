@@ -1,6 +1,6 @@
 import Header from "./Components/header/Header";
 import Input from "./Components/input/Input";
-import TaskList from "./Components/taskList/TaskList";
+import ItemList from "./Components/itemList/ItemList";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <div className="App">
         <Header />
         <Input />
-        <TaskList />
+        <ItemList />
       </div>
     </Provider>
   );
