@@ -51,11 +51,11 @@
     }
     }
     .task-list{
-    background-color: rgb(11, 130, 241);
+    background-color: rgb(76 182 199);
     color: #fff;
     font-weight: bold;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 0.7rem;
     -webkit-border-radius: 0.5rem;
     -moz-border-radius: 0.5rem;

@@ -34,7 +34,7 @@
 
     .input input::placeholder {
     color: rgb(11, 130, 241);
-    font-size: 14px;
+    font-size: 1rem;
     }
 
     .input label {
@@ -64,7 +64,13 @@
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
     }
-
+    @media (max-width:767px) 
+    {
+        input[type="date"] {
+                width: 100%;
+            }
+    }
+  
     .input input[type="submit"] {
     background-color: rgb(11, 130, 241);
     color: #fff;
@@ -82,3 +88,4 @@
     .input input[type="submit"]:hover {
     background-color: rgb(23, 107, 185);
     }
+    
