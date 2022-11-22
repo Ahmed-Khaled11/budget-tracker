@@ -40,7 +40,7 @@ export default function ItemList() {
       <div className="list">
         <p className="item-list">
           {items.length ? (
-            "items List"
+            "Items List"
           ) : (
             <span> No items To Show, Add One.. !</span>
           )}
