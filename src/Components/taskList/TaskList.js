@@ -6,11 +6,11 @@ export default function ItemList() {
   let { tasks } = useSelector((state) => state.tasks);
   let { isActive } = useSelector((state) => state.tasks);
 
-  let localStoragetasks = JSON.parse(localStorage.getItem("tasks"));
-  // add key = isActive to all itemes
+  let tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"));
+  // add key {isActive: } to all tasks
   tasks = tasks.map((e) => ({ ...e, isActive }));
-  if (localStoragetasks) {
-    tasks = localStoragetasks;
+  if (tasksFromLocalStorage) {
+    tasks = tasksFromLocalStorage;
   }
   // to handle class "isActive" when click on task
   const handleIsActive = (e, currentTask) => {
@@ -38,56 +38,62 @@ export default function ItemList() {
   return (
     <div className="tasks container">
       <div className="list">
-        <p className="task-list">{tasks.length ? "Tasks List" : <span> No tasks To Show, Add One.. !</span>}</p>
-        {tasks.length ? (
-          tasks.map((task, index) => (
-            <div
-              className={`task ${task.isActive ? `active` : ""}`}
-              key={index}
-              onClick={(e) => handleIsActive(e, task)}
-            >
-              <p>{index + 1} -</p>
-              <span className="title">{task.title}</span>|
-              <span
-                className="price"
-                style={{ color: task.type === "income" ? "green" : "red" }}
+        <p className="task-list">
+          {tasks.length ? (
+            "Tasks List"
+          ) : (
+            <span> No tasks To Show, Add One.. !</span>
+          )}
+        </p>
+        {tasks.length
+          ? tasks.map((task, index) => (
+              <div
+                className={`task ${task.isActive ? `active` : ""}`}
+                key={index}
+                onClick={(e) => handleIsActive(e, task)}
               >
-                ${task.price}{" "}
-                {task.type === "income" ? (
-                  <svg
-                    xmlns="http://indexww.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className="bi bi-arrow-up-short"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className="bi bi-arrow-down-short"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
-                    />
-                  </svg>
-                )}
-              </span>
-              |<span className="date">{task.date}</span>|
-              <button onClick={(e) => deleteTask(index)}>Delete</button>
-            </div>
-          ))
-        ) :""}
+                <p>{index + 1} -</p>
+                <span className="title">{task.title}</span>|
+                <span
+                  className="price"
+                  style={{ color: task.type === "income" ? "green" : "red" }}
+                >
+                  ${task.price}{" "}
+                  {task.type === "income" ? (
+                    <svg
+                      xmlns="http://indexww.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-arrow-up-short"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-arrow-down-short"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                      />
+                    </svg>
+                  )}
+                </span>
+                |<span className="date">{task.date}</span>|
+                <button onClick={(e) => deleteTask(index)}>Delete</button>
+              </div>
+            ))
+          : ""}
       </div>
     </div>
   );
